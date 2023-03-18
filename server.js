@@ -1,5 +1,6 @@
 const sequelize = require('./config/connection')
 
+// sync connection to db
 sequelize.sync()
   .then(() => {
     console.log('All models were synchronized successfully.');
