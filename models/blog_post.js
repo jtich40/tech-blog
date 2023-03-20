@@ -1,10 +1,15 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./user');
 
 class BlogPost extends Model {}
 
 BlogPost.init({
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
   title: {
     type: DataTypes.STRING,
     allowNull: false
@@ -17,7 +22,7 @@ BlogPost.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: User,
+      model: 'user',
       key: 'id'
     }
   }
@@ -28,7 +33,4 @@ BlogPost.init({
   modelName: 'blog_post'
 });
 
-BlogPost.belongsTo(User, { foreignKey: 'user_id' });
-
 module.exports = BlogPost;
-module.exports = User;

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+      "content": "This is the first comment on the first blog post.",
+      "user_id": 1,
+      "post_id": 1
+    },
+    {
+        "id": 2,
+      "content": "This is the second comment on the first blog post.",
+      "user_id": 2,
+      "post_id": 1
+    },
+    {
+        "id": 3,
+      "content": "This is the first comment on the second blog post.",
+      "user_id": 1,
+      "post_id": 2
+    },
+    {
+        "id": 4,
+      "content": "This is the first comment on the third blog post.",
+      "user_id": 2,
+      "post_id": 3
+    }
+  ]

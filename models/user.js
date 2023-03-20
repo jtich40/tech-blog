@@ -1,15 +1,19 @@
+// import the Model class and DataTypes object from the sequelize package
 const { Model, DataTypes } = require('sequelize');
+// import bcrypt to hash passwords
 const bcrypt = require('bcrypt');
+// import our database connection from config.js
 const sequelize = require('../config/connection');
-const Comment = require('./comment');
-const BlogPost = require('./blog_post');
 
+// create User model by extending Model class
 class User extends Model {
-  checkPassword(loginPw) {
+    // set up method to run on instance data (per user) to check password
+    checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
+// create fields/columns for User model
 User.init(
   {
     id: {
@@ -44,8 +48,5 @@ User.init(
     modelName: 'user',
   }
 );
-
-User.hasMany(Comment, { foreignKey: 'user_id' });
-User.hasMany(BlogPost, { foreignKey: 'user_id' });
 
 module.exports = User;
