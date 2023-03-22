@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const { User, BlogPost, Comment } = require('../models');
-const withAuth = require('../../utils/auth')
+const withAuth = require('../utils/auth')
 
 // Get all blogs and JOIN with user data
 router.get('/', async (req ,res) => {
     try {
         const blogPostData = await BlogPost.findAll({
+            attributes: ['title', 'content', 'created_at', 'id'],
             include: [
                 {
                     model: User,
@@ -28,10 +29,13 @@ router.get('/', async (req ,res) => {
     }
 })
 
-// Get specific blog post and JOIN with user data
-router.get('/blog/:id', async (req, res) => {
+// Get specific blog post created by user
+router.get('/:id', withAuth, async (req, res) => {
     try {
-        const blogPostData = await BlogPost.findByPk(req.params.id, {
+        const blogPostData = await BlogPost.findOne({
+            where: {
+                id: req.params.id
+            },
             include: [
                 {
                     model: Comment,
@@ -41,11 +45,16 @@ router.get('/blog/:id', async (req, res) => {
                             attributes: ['username']
                         }
                     ]
+                },
+                {
+                    model: User,
+                    attributes: ['username']
                 }
             ]
         })
 
         const post = blogPostData.map(post => post.get({ plain: true }))
+        
         res.render('blog', {
             post,
             logged_in: req.session.logged_in
@@ -57,6 +66,7 @@ router.get('/blog/:id', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
 // get login page
 router.get('/login', async (req ,res) => {
     // If the user is already logged in, redirect the request to another route

@@ -29,6 +29,11 @@ Comment.init({
       model: 'blog_post',
       key: 'id'
     }
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW
   }
 }, {
   sequelize,
