@@ -52,6 +52,11 @@ router.get('/:id', withAuth, async (req, res) => {
                 }
             ]
         })
+        if (!blogPostData) {
+            // handle the case where no blog post was found with the given id
+            res.status(404).send('Blog post not found')
+            return
+        }
 
         const post = blogPostData.map(post => post.get({ plain: true }))
         
@@ -74,7 +79,10 @@ router.get('/login', async (req ,res) => {
         res.redirect('/dashboard')
         return
     }
-    res.render('login')
+    res.render('login', function(err, html) {
+        if (err) console.error(err);
+        res.send(html);
+      })
 })
 
 // get dashboard page, use withAuth middleware to prevent access to route

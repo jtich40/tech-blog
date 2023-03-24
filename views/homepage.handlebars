@@ -1,18 +1,12 @@
 <div>
-  <h1>Homepage</h1>
   {{#each posts as |post|}}
   <div>
-    <h2>{{post.title}}</h2>
-    <p>{{post.content}}</p>
-    <div style="background-color: yellow">
-      {{#each post.comments as |comment|}}
-      <div>
-        <p>{{comment.content}}</p>
-        <p>Commentator: {{comment.user.username}}</p>
-      </div>
-      {{/each}}
+    <h3>{{post.title}}</h3>
+    <span><a href="/{{post.id}}">View Blog</a></span>
+    <div>
+      <p>{{post.content}}</p>
+      <p>Written by {{user.username}} on {{formatDate created_at}}</p>
     </div>
-    <p>Poster: {{post.user.username}}</p>
   </div>
-  {{/each}}
+{{/each}}
 </div>

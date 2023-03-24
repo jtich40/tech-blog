@@ -6,15 +6,3 @@ router.use('/dashboard', dashboardRoute);
 router.use('/user', userRoute);
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
