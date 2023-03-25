@@ -1,4 +1,4 @@
-<div class="row">
+{{!-- <div class="row">
   <div class="col-md-6">
     <h2>Login</h2>
     <form class="form login-form">
@@ -18,7 +18,7 @@
   <div class="col-md-6">
     <h2>Signup</h2>
     <form class="form signup-form">
-    
+
       <div class="form-group">
         <label for="email-signup">Username:</label>
         <input class="form-input" type="text" id="username-signup" />
@@ -32,5 +32,61 @@
       </div>
     </form>
   </div>
-</div>
-<script src="../public/js/login.js"></script>
+</div> --}}
+
+<form class="form login-form">
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card px-5 py-5" id="form1">
+          <div class="form-data" v-if="!submitted">
+            <div class="forms-inputs mb-4">
+              <span>Username</span>
+              <input class="input-adj form-input" autocomplete="off" type="text" v-model="email"
+                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
+                v-on:blur="emailBlured = true" id="username-login">
+            </div>
+            <div class="forms-inputs mb-4">
+              <span>Password</span>
+              <input type="password" class="input-adj form-input" autocomplete="off" v-model="password"
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
+                v-on:blur="passwordBlured = true" id="password-login">
+            </div>
+            <div class="mb-3"> <button type="submit" class="btn btn-dark w-100">Login</button> </div>
+          </div>
+          <div class="success-data" v-else>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{{!-- Signup Form --}}
+<form class="form signup-form">
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card px-5 py-5" id="form1">
+          <div class="form-data" v-if="!submitted">
+            <div class="forms-inputs mb-4">
+              <span>Username</span>
+              <input class="input-adj" autocomplete="off" type="text" v-model="email"
+                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
+                v-on:blur="emailBlured = true" id="username-signup">
+            </div>
+            <div class="forms-inputs mb-4">
+              <span>Password</span>
+              <input class="input-adj" autocomplete="off" type="password" v-model="password"
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
+                v-on:blur="passwordBlured = true" id="password-signup">
+            </div>
+            <div class="mb-3"> <button type="submit" class="btn btn-dark w-100">Signup</button> </div>
+          </div>
+          <div class="success-data" v-else>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<script src="./js/login.js"></script>

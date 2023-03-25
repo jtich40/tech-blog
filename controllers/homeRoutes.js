@@ -30,47 +30,47 @@ router.get('/', async (req ,res) => {
 })
 
 // Get specific blog post created by user
-router.get('/:id', withAuth, async (req, res) => {
-    try {
-        const blogPostData = await BlogPost.findOne({
-            where: {
-                id: req.params.id
-            },
-            include: [
-                {
-                    model: Comment,
-                    include: [
-                        {
-                            model: User,
-                            attributes: ['username']
-                        }
-                    ]
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
-        })
-        if (!blogPostData) {
-            // handle the case where no blog post was found with the given id
-            res.status(404).send('Blog post not found')
-            return
-        }
+// router.get('/:id', withAuth, async (req, res) => {
+//     try {
+//         const blogPostData = await BlogPost.findOne({
+//             where: {
+//                 id: req.params.id
+//             },
+//             include: [
+//                 {
+//                     model: Comment,
+//                     include: [
+//                         {
+//                             model: User,
+//                             attributes: ['username']
+//                         }
+//                     ]
+//                 },
+//                 {
+//                     model: User,
+//                     attributes: ['username']
+//                 }
+//             ]
+//         })
+//         if (!blogPostData) {
+//             // handle the case where no blog post was found with the given id
+//             res.status(404).send('Blog post not found')
+//             return
+//         }
 
-        const post = blogPostData.map(post => post.get({ plain: true }))
+//         const post = blogPostData.map(post => post.get({ plain: true }))
         
-        res.render('blog', {
-            post,
-            logged_in: req.session.logged_in
-        })
+//         res.render('blog', {
+//             post,
+//             logged_in: req.session.logged_in
+//         })
 
-    }
-    catch (err) {
-        console.log(err)
-        res.status(500).json(err)
-    }
-})
+//     }
+//     catch (err) {
+//         console.log(err)
+//         res.status(500).json(err)
+//     }
+// })
 
 // get login page
 router.get('/login', async (req ,res) => {
