@@ -16,9 +16,9 @@
 {{!-- Each user post --}}
 <div>
   {{#each post}}
-  {{console.log this}}
   <div>
     <h2>{{title}}</h2>
+   <a href="/api/post/{{post.id}}" class="small-text view-post" data-id="{{post.id}}">Edit Blog</a>
     <p>{{content}}</p>
     <p>Created at: {{created_at}}</p>
     <p>Posted by: {{user.username}}</p>
