@@ -2,7 +2,7 @@
   {{#each posts as |post|}}
   <div class="divider">
     <h4>{{post.title}}</h4>
-    <button id="view-post" class="small-text">View Blog</button>
+    <button class="small-text view-post" data-id="{{post.id}}">View Blog</button>
     <div>
       <p class="para">{{post.content}}</p>
       <p class="small-text">Written by {{user.username}} on {{formatDate created_at}}</p>

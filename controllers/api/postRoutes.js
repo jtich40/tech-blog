@@ -36,7 +36,7 @@ router.get('/:id', async (req, res) => {
             return
         }
 
-        const post = blogPostData.map(post => post.get({ plain: true }))
+        const post = blogPostData.get({ plain: true })
         
         res.render('blog', {
             post,
