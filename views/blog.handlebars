@@ -1,5 +1,5 @@
-{{!-- homepage single-post --}}
-<div>
+
+{{!-- <div>
   <div>
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
@@ -23,8 +23,7 @@
 </div>
 </div>
 
-{{!-- display: none until button clicked --}}
-<form class="hide">
+<form>
   <div>
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
@@ -37,7 +36,7 @@
 {{!-- After update blog button clicked with textarea info, refreshes page with blog updated back to single-post view --}}
   <button type="submit" class="btn btn-primary" id="update-comment">Update Comment</button>
   {{!-- After delete blog button clicked, refreshes page and removes blog back on dashboard view --}}
-  <button type="submit" class="btn btn-primary" id="delete-comment">Delete Comment</button>
+  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="delete-comment">Delete Comment</button>
 </form>
 
 <form class="hide">
@@ -53,5 +52,41 @@
   <button id="update-post" type="submit" class="btn btn-primary">Update Blog</button>
   {{!-- After delete blog button clicked, refreshes page and removes blog back on dashboard view --}}
   <button id="delete-post" type="submit" class="btn btn-primary">Delete Blog</button>
+</form>
+<script src="./js/blog.js"></script> --}}
+
+  {{!-- single-post --}}
+<form>
+<div>
+  <div class="form-group">
+    <label for="title">Blog Title</label>
+    <input class="form-control" name="title" id="title" rows="1" value="{{post.title}}"></input>
+  </div>
+  <div class="form-group">
+    <label for="content">Blog Content</label>
+    <input class="form-control para" name="content" id="content" rows="5" value="{{post.content}}"></input>
+  </div>
+  <p class="small-content">Written by {{post.user.username}} on {{formatDate created_at}}</p>
+</div>
+{{#if (eq post.user.id user.id)}}
+<div>
+  <button type="submit" class="btn btn-primary" id="update-post" data-id="{{post.id}}">Update Post</button>
+  <button type="submit" class="btn btn-primary" id="delete-post" data-id="{{post.id}}">Delete Post</button>
+</div>
+{{/if}}
+{{#each post.comment.comments as |comment|}}
+<input class="form-control para" name="title" id="content" rows="1" value="{{comment.content}}"></input>
+<p class="small-text">{{comment.user.username}} on {{formatDate created_at}}</p>
+</div>
+<div>
+  {{#if logged_in}}
+  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="update-comment">Update Comment</button>
+  <input name="comment" cols="30" rows="10"></input>
+  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="add-comment">Add Comment</button>
+  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="delete-comment">Delete Comment</button>
+  {{/if}}
+  {{/each}}
+</div>
+</div>
 </form>
 <script src="./js/blog.js"></script>
