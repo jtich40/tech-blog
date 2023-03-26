@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,39 +8,42 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <div class="flex-column justify-space-around">
-      <div class="container mt-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6" id="border">
-    <header class="display-flex justify-space-between align-center p-2">
-    <h1  class="color row d-flex justify-content-center header-style">Tech Blog</h1>
-    <div class="row d-flex justify-content-center ">
-      <nav class="display-flex justify-space-between align-center">
-        <a href="/" class="nav-style">Home</a>
-        {{#if logged_in}}
-          <a href="/homepage" class="nav-style" id="logout">Logout</a>
-          {{!-- <button id="logout">Logout</button> --}}
-        {{else}}
-          <a href="/login" class="nav-style">Login</a>
-        {{/if}}
-        {{#if logged_in}}
-          <a href="/dashboard" class="nav-style">Dashboard</a>
-          {{else}}
-          <a href="/login" class="nav-style">Dashboard</a>
-        {{/if}}
-      </nav>
+  <div class="flex-column justify-space-around">
+    <div class="container mt-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-12" id="border">
+          <header class="display-flex justify-space-between align-center p-2">
+            <h1 class="color row d-flex justify-content-center header-style">Tech Blog</h1>
+            <div class="row d-flex justify-content-center ">
+              <nav class="display-flex justify-space-between align-center">
+                <a href="/" class="nav-style">Home</a>
+                {{#if logged_in}}
+                <a href="/homepage" class="nav-style" id="logout">Logout</a>
+                {{else}}
+                <a href="/login" class="nav-style">Login</a>
+                {{/if}}
+                <a href="/dashboard" class="nav-style">Dashboard</a>
+                
+              </nav>
+              {{#if logged_in}}
+              <div>
+                {{!-- <p>Welcome, {{{username}}}!</p> --}}
+              </div>
+              {{/if}}
+            </div>
+          </header>
+          <main>
+            {{{body}}}
+          </main>
+        </div>
       </div>
-    </header>
-    <main>
-    {{{body}}}
-     </main>
+    </div>
   </div>
-      </div>
-  </div>
-</div>
   {{#if logged_in}}
   <script src="../js/logout.js"></script>
   {{/if}}
 </body>
+
 </html>

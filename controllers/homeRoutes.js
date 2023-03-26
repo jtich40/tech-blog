@@ -30,7 +30,7 @@ router.get('/', async (req ,res) => {
 })
 
 // Get specific blog post created by user
-// router.get('/:id', withAuth, async (req, res) => {
+// router.get('/:id', async (req, res) => {
 //     try {
 //         const blogPostData = await BlogPost.findOne({
 //             where: {
@@ -71,6 +71,8 @@ router.get('/', async (req ,res) => {
 //         res.status(500).json(err)
 //     }
 // })
+
+
 
 // get login page
 router.get('/login', async (req ,res) => {
