@@ -37,7 +37,7 @@ const deletePostHandler = async (event) => {
 const addCommentHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const comment = document.querySelector('#comment').value.trim();
+        const comment = document.querySelector('#add-comment').value.trim();
         if (comment) {
             const response = await fetch(`/api/post/${id}`, {
                 method: 'POST',
@@ -58,7 +58,7 @@ const addCommentHandler = async (event) => {
 const updateCommentHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const comment = document.querySelector('#comment').value.trim();
+        const comment = document.querySelector('#update-comment').value.trim();
         if (comment) {
             const response = await fetch(`/api/comment/${id}`, {
                 method: 'PUT',
@@ -67,6 +67,7 @@ const updateCommentHandler = async (event) => {
                     'Content-Type': 'application/json',
                 },
             });
+            console.log("test")
             if (response.ok) {
                 document.location.reload();
             } else {

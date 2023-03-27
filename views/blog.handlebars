@@ -8,7 +8,7 @@
 <p class="small-text date">Written by {{post.user.username}} on {{formatDate created_at}}</p>
 
 {{!-- edit post section --}}
-{{#if (eq post.user_id user.id)}}
+{{#if (eq post.user.id user.id)}}
 <div>
   <p>Update Post Title Below:</p>
   <input id="title" cols="30" rows="1" value="{{post.title}}"></input>
