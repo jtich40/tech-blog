@@ -28,12 +28,12 @@
 {{!-- edit comment section --}}
 {{#if ../logged_in}}
 <p>Add Comment Below:</p>
-<input id="comment" cols="30" rows="10"></input>
+<input id="test" cols="30" rows="10"></input>
 <div>
   <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="add-comment">Add Comment</button>
   </div>
   <p>Update Comment Below:</p>
-<input id="comment" cols="30" rows="10" value="{{comment.content}}"></input>
+<input id="update-comment" cols="30" rows="10" value="{{comment.content}}"></input>
   <div>
   <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="update-comment">Update Comment</button>
     <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="delete-comment">Delete Comment</button>

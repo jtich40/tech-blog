@@ -37,7 +37,8 @@ const deletePostHandler = async (event) => {
 const addCommentHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const comment = document.querySelector('#add-comment').value.trim();
+        const comment = document.querySelector('#test').value.trim();
+        console.log("test")
         if (comment) {
             const response = await fetch(`/api/post/${id}`, {
                 method: 'POST',
@@ -60,6 +61,7 @@ const updateCommentHandler = async (event) => {
         const id = event.target.getAttribute('data-id');
         const comment = document.querySelector('#update-comment').value.trim();
         if (comment) {
+            console.log("test")
             const response = await fetch(`/api/comment/${id}`, {
                 method: 'PUT',
                 body: JSON.stringify({ comment }),
