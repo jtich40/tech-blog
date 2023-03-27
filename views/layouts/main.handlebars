@@ -13,10 +13,12 @@
   <div class="flex-column justify-space-around">
     <div class="container mt-5">
       <div class="row d-flex justify-content-center">
-        <div class="col-md-12" id="border">
+        <div class="col-md-7" id="border">
           <header class="display-flex justify-space-between align-center p-2">
             <h1 class="color row d-flex justify-content-center header-style">Tech Blog</h1>
             <div class="row d-flex justify-content-center ">
+
+              {{!-- nav section --}}
               <nav class="display-flex justify-space-between align-center">
                 <a href="/" class="nav-style">Home</a>
                 {{#if logged_in}}
@@ -25,7 +27,6 @@
                 <a href="/login" class="nav-style">Login</a>
                 {{/if}}
                 <a href="/dashboard" class="nav-style">Dashboard</a>
-                
               </nav>
               {{#if logged_in}}
               <div>
@@ -34,6 +35,8 @@
               {{/if}}
             </div>
           </header>
+
+          {{!-- specified template section --}}
           <main>
             {{{body}}}
           </main>

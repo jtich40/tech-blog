@@ -1,31 +1,44 @@
 {{!-- single-post --}}
-<form>
-  <div class="form-group">
-    <label for="title">Blog Title</label>
-    <input class="form-control" name="title" id="title" rows="1" value="{{post.title}}"></input>
-  </div>
-  <div class="form-group">
-    <label for="content">Blog Content</label>
-    <input class="form-control para" name="content" id="content" rows="5" value="{{post.content}}"></input>
-  </div>
-  <p class="small-content">Written by {{post.user.username}} on {{formatDate created_at}}</p>
+<div class="form-group">
+  <h1 id="title">{{post.title}}</h1>
+</div>
+<div class="form-group">
+  <p class="para" name="content" id="content" rows="5">{{post.content}}</p>
+</div>
+<p class="small-text date">Written by {{post.user.username}} on {{formatDate created_at}}</p>
 
-{{#if (eq post.user.id user.id)}}
-  <button type="submit" class="btn btn-primary" id="update-post" data-id="{{post.id}}">Update Post</button>
-  <button type="submit" class="btn btn-primary" id="delete-post" data-id="{{post.id}}">Delete Post</button>
+{{!-- edit post section --}}
+{{#if (eq post.user_id user.id)}}
+<div>
+  <p>Update Post Title Below:</p>
+  <input id="title" cols="30" rows="1" value="{{post.title}}"></input>
+  <p>Update Post Content Below:</p>
+  <input id="content" cols="30" rows="1" value="{{post.content}}"></input>
+</div>
+<button type="submit" class="btn btn-primary" id="update-post" data-id="{{post.id}}">Update Post</button>
+<button type="submit" class="btn btn-primary" id="delete-post" data-id="{{post.id}}">Delete Post</button>
 {{/if}}
 
+{{!-- comment section --}}
+<h2>Comments</h2>
 {{#each post.comments as |comment|}}
-<input class="form-control para" name="title" id="content" rows="1" value="{{comment.content}}"></input>
-<p class="small-text">{{comment.user.username}} on {{formatDate created_at}}</p>
-  
-  {{#if logged_in}}
-  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="update-comment">Update Comment</button>
-  <input id="comment" cols="30" rows="10"></input>
+<p class="para" name="title" id="comment">{{comment.content}}</p>
+<p class="small-text date">{{comment.user.username}} on {{formatDate created_at}}</p>
+
+{{!-- edit comment section --}}
+{{#if ../logged_in}}
+<p>Add Comment Below:</p>
+<input id="comment" cols="30" rows="10"></input>
+<div>
   <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="add-comment">Add Comment</button>
-  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="delete-comment">Delete Comment</button>
-  {{/if}}
-  {{/each}}
+  </div>
+  <p>Update Comment Below:</p>
+<input id="comment" cols="30" rows="10" value="{{comment.content}}"></input>
+  <div>
+  <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="update-comment">Update Comment</button>
+    <button type="submit" class="btn btn-primary" data-id="{{comment.id}}" id="delete-comment">Delete Comment</button>
 </div>
-</form>
+{{/if}}
+{{/each}}
+</div>
 <script src="/js/blog.js"></script>

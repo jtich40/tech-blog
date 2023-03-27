@@ -17,6 +17,7 @@ router.get('/', withAuth, async (req, res) => {
                 }
             ]
         })
+        console.log(blogPostData)
         const post = blogPostData.map(post => post.get({ plain: true }))
         res.render('dashboard', {
             post,

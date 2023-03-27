@@ -30,7 +30,8 @@ body {
     background-color: #7d7d81;
   }
   .divider {
-    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
   }
   .color {
     color: #fff;
@@ -53,16 +54,33 @@ body {
   .para {
     border-bottom: #bcf3c1;
   }
-  h3 {
+  .login-subtitle {
     color: #fff;
     background-color: #000;
     text-align: center;
     margin-bottom: 15px;
 
   }
+  .page-title{
+    text-align: center;
+    text-decoration: underline;
+  }
 
 h4 {
     padding-top: 10px
+}
+
+#comment {
+    color: #000;
+}
+
+.subtitle {
+    margin-top: 25px;
+    color: #000;
+}
+
+.date {
+    font-style: italic;
 }
   
   /* bootstrap */
