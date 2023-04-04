@@ -92,7 +92,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 router.post("/:id", withAuth, async (req, res) => {
     try {
      const newComment = await Comment.create({
-        ...req.body,
+        content: req.body.comment,
         user_id: req.session.user_id,
         blog_post_id: req.params.id
     })

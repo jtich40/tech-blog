@@ -1,8 +1,8 @@
 const updatePostHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const title = document.querySelector('#title').value.trim();
-        const content = document.querySelector('#content').value.trim();
+        const title = document.querySelector('#update-title').value.trim();
+        const content = document.querySelector('#update-content').value.trim();
         if (title && content) {
             const response = await fetch(`/api/post/${id}`, {
                 method: 'PUT',
@@ -37,53 +37,13 @@ const deletePostHandler = async (event) => {
 const addCommentHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        const comment = document.querySelector('#test').value.trim();
-        console.log("test")
-        if (comment) {
-            const response = await fetch(`/api/post/${id}`, {
-                method: 'POST',
-                body: JSON.stringify({ comment }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                document.location.reload();
-            } else {
-                alert(response.statusText);
-            }
-        }
-    }
-}
-
-const updateCommentHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-        const comment = document.querySelector('#update-comment').value.trim();
-        if (comment) {
-            console.log("test")
-            const response = await fetch(`/api/comment/${id}`, {
-                method: 'PUT',
-                body: JSON.stringify({ comment }),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            console.log("test")
-            if (response.ok) {
-                document.location.reload();
-            } else {
-                alert(response.statusText);
-            }
-        }
-    }
-}
-
-const deleteCommentHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
-        const response = await fetch(`/api/comment/${id}`, {
-            method: 'DELETE',
+        const comment = document.querySelector('#new-comment').value.trim();
+        const response = await fetch(`/api/post/${id}`, {
+            method: 'POST',
+            body: JSON.stringify({ comment }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
         });
         if (response.ok) {
             document.location.reload();
@@ -96,5 +56,3 @@ const deleteCommentHandler = async (event) => {
 document.querySelector('#update-post').addEventListener('click', updatePostHandler);
 document.querySelector('#delete-post').addEventListener('click', deletePostHandler);
 document.querySelector('#add-comment').addEventListener('click', addCommentHandler);
-document.querySelector('#update-comment').addEventListener('click', updateCommentHandler);
-document.querySelector('#delete-comment').addEventListener('click', deleteCommentHandler);
