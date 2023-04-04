@@ -11,9 +11,9 @@
 {{#if logged_in}}
 <div>
   <p>Update Post Title Below:</p>
-  <input id="update-title" cols="30" rows="1" value="{{post.title}}"></input>
+  <input id="update-title" cols="30" rows="1"></input>
   <p>Update Post Content Below:</p>
-  <input id="update-content" cols="30" rows="1" value="{{post.content}}"></input>
+  <input id="update-content" cols="30" rows="1"></input>
 </div>
 <button type="submit" class="btn btn-primary" id="update-post" data-id="{{post.id}}">Update Post</button>
 <button type="submit" class="btn btn-primary" id="delete-post" data-id="{{post.id}}">Delete Post</button>
@@ -32,6 +32,6 @@
 <input id="new-comment" cols="30" rows="10"></input>
 <div>
   <button type="submit" class="btn btn-primary" data-id="{{post.id}}" id="add-comment">Add Comment</button>
-  </div>
+</div>
 <script src="/js/blog.js"></script>
 {{/if}}

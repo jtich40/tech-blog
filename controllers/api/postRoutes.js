@@ -1,8 +1,3 @@
-// get single post
-// update post
-// delete post
-// create new comment on blog post
-
 const router = require('express').Router()
 const { BlogPost, User, Comment } = require('../../models')
 const withAuth = require('../../utils/auth')
@@ -37,7 +32,7 @@ router.get('/:id', async (req, res) => {
         }
 
         const post = blogPostData.get({ plain: true })
-        
+
         res.render('blog', {
             post,
             logged_in: req.session.logged_in
@@ -91,18 +86,17 @@ router.delete('/:id', withAuth, async (req, res) => {
 // create new comment on blog post
 router.post("/:id", withAuth, async (req, res) => {
     try {
-     const newComment = await Comment.create({
-        content: req.body.comment,
-        user_id: req.session.user_id,
-        blog_post_id: req.params.id
-    })
-    res.status(200).json(newComment)
+        const newComment = await Comment.create({
+            content: req.body.comment,
+            user_id: req.session.user_id,
+            blog_post_id: req.params.id
+        })
+        res.status(200).json(newComment)
     }
     catch (err) {
         console.log(err)
         res.status(400).json(err)
     }
 });
-
 
 module.exports = router

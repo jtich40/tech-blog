@@ -13,11 +13,11 @@ router.post('/', async (req, res) => {
             req.session.logged_in = true;
             res.redirect('/dashboard');
         });
-      } catch (err) {
+    } catch (err) {
         console.log(err);
         res.status(400).json(err);
-      }
-    });
+    }
+});
 
 // login as existing user
 router.post('/login', async (req, res) => {

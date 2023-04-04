@@ -7,8 +7,8 @@ const sequelize = require('../config/connection');
 
 // create User model by extending Model class
 class User extends Model {
-    // set up method to run on instance data (per user) to check password
-    checkPassword(loginPw) {
+  // set up method to run on instance data (per user) to check password
+  checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
@@ -23,9 +23,9 @@ User.init(
       autoIncrement: true,
     },
     username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
