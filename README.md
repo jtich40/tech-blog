@@ -2,7 +2,7 @@
   ![License](https://img.shields.io/badge/license-MIT-red.svg)
 
 ## Description
-A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts as well. The site follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+A CMS-style blog site where developers can publish their blog posts and comment on other developers’ posts as well. The site follows the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication. You can view the deployed application [here](https://mvc-tech-blog-site.herokuapp.com/)!
 
 ## Table of Contents
 * [Usage](#usage)
